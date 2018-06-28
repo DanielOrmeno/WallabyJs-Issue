@@ -1,0 +1,11 @@
+@import "~vue-material/dist/theme/engine";
+$warning-active: #e13051;
+$hd-turquoise: #46c0bd;
+
+@include md-register-theme("default", (
+  primary: $hd-turquoise,
+  accent: $warning-active
+));
+
+@import "~vue-material/dist/theme/all";
+

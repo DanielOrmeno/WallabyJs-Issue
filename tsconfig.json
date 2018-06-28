@@ -1,0 +1,29 @@
+{
+  "include": [
+    "./**/*.ts",
+    "./**/*.vue",
+    "./**/*.tsx",
+    "./**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "lib": ["es6", "dom"],
+    "target": "esnext",
+    "module": "esnext",
+    "types": ["reflect-metadata"],
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    },
+    "strict": true,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}

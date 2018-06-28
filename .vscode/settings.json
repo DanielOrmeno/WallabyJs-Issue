@@ -1,0 +1,7 @@
+{
+    "tslint.autoFixOnSave": false,
+    "tslint.jsEnable": true,
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "tslint.configFile": "tslint.json"
+}
