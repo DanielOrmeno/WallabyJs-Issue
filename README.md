@@ -1,7 +1,3 @@
-# Health Director 3.0
-
-> Health Director Client
-
 # Project 
 
 ## Dependencies
