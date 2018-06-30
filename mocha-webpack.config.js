@@ -1,4 +1,6 @@
 // tslint:disable
+const path = require('path');
+
 module.exports = {
     output: {
         devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]',
@@ -8,17 +10,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$|\.vue$/,
-                use: {
-                    loader: "istanbul-instrumenter-loader",
-                    options: { esModules: true }
-                },
-                enforce: "post",
-                exclude: /node_modules|\.spec\.js$/
-            },
-            { 
-                test: /\.tsx?$/,
-                loader: "ts-loader"
+                test: /\.ts$/,
+                loader: "ts-loader",
+                options: {
+                    appendTsSuffixTo: [/\.vue$/]
+                }
             },
             {
                 test: /\.vue$/,
@@ -30,16 +26,15 @@ module.exports = {
                         scss: ["vue-style-loader", "css-loader"]
                     }
                 }
-            },
-            {
-                test: /\.js$/,
-                loader: "babel-loader",
-                exclude: /node_modules/
             }
         ]
     },
     resolve: {
-        extensions: ['.ts']
+        extensions: ['.ts', '.js', '.vue'],
+        alias: {
+            '@': path.resolve(__dirname, './'),
+            '~': path.resolve(__dirname, './')
+        }
     },
     devServer: {
         historyApiFallback: true,

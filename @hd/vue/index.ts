@@ -14,7 +14,7 @@ import {
 
 import { Action, Getter, Mutation, namespace, State } from 'vuex-class';
 
-import { HdContainer, HdInject, HdProvide, TYPES } from '~/@hd/core/framework/ioc';
+import { HdContainer, HdInject, HdProvide, TYPES } from '../core/framework/ioc';
 
 export {
     Action,

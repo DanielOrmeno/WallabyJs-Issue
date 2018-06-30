@@ -1,44 +1,28 @@
 import { inject, injectable } from 'inversify';
-import { IHDConfig } from '~/@hd/core/configuration';
-import { TYPES } from '~/@hd/core/framework/ioc/types';
-import { Item } from '~/@hd/core/model/item';
+import { IHTTPClient } from '../../../core/classes/IhttpClient';
+import { IHDConfig } from '../../../core/configuration';
+import { TYPES } from '../../../core/framework/ioc/types';
+import { Item } from '../../../core/model/item';
 import { AuthService } from '../base/auth.service';
 import { IItemService } from './item.service.interface';
 
 @injectable()
 export class ItemService extends AuthService implements IItemService {
     constructor(
-        @inject(TYPES.HTTPClient) httpClient: any,
+        @inject(TYPES.HTTPClient) httpClient: IHTTPClient,
         @inject(TYPES.HDConfig) configuration: IHDConfig,
     ) {
         super(httpClient, configuration);
+        this._endpoint = 'Items';
     }
 
-    async getItemList(): Promise<Item[]> {
-        return new Promise<Item[]>((resolve, _reject) => {
-            resolve([
-                { id: '4', date: new Date(), time: new Date(), doctor: 'John Doe', code: '1', urNumber: '13', status: 'admitted' },
-                { id: '5', date: new Date(), time: new Date(), doctor: 'John Doe', code: '1', urNumber: '13', status: 'admitted' },
-                { id: '6', date: new Date(), time: new Date(), doctor: 'John Doe', code: '1', urNumber: '13', status: 'admitted' },
-                { id: '7', date: new Date(), time: new Date(), doctor: 'John Doe', code: '1', urNumber: '13', status: 'admitted' },
-                { id: '8', date: new Date(), time: new Date(), doctor: 'John Doe', code: '1', urNumber: '13', status: 'admitted' },
-            ]);
-        });
+    async getListAsync(): Promise<Item[]> {
+        const url = `${await this.UrlAsync()}/list`;
+        return this._httpClient.getAsync(url);
     }
 
-    async getItem(id: string): Promise<Item> {
-        return new Promise<Item>((resolve, _reject) => {
-            resolve({
-                id,
-                firstName: 'Daniel',
-                lastName: 'Ormeno',
-                date: new Date(),
-                time: new Date(),
-                doctor: 'Lindsay',
-                code: '1910',
-                urNumber: '12143',
-                status: 'admitted'
-            });
-        });
+    async getItemAsync(id: string): Promise<Item> {
+        const url = `${await this.UrlAsync()}/item/${id}`;
+        return this._httpClient.getAsync(url);
     }
 }

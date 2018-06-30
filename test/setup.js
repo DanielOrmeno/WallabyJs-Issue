@@ -1,4 +1,5 @@
 // tslint:disable
+require('reflect-metadata');
 require('browser-env')();
 const Vue = require('vue');
 

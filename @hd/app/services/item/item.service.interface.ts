@@ -1,6 +1,6 @@
-import { Item } from '~/@hd/core/model/item';
+import { Item } from '../../../core/model/item';
 
 export interface IItemService {
-    getItemList(): Promise<Item[]>;
-    getItem(id: string): Promise<Item>;
+    getListAsync(): Promise<Item[]>;
+    getItemAsync(id: string): Promise<Item>;
 }

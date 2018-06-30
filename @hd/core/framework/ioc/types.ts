@@ -1,8 +1,9 @@
 const TYPES = {
+    HTTPClientProvider: Symbol.for('IHTTPClientProvider'),
     HTTPClient: Symbol.for('IHTTPClient'),
     HDConfig: Symbol.for('IHDConfig'),
+    BreakpointResolver: Symbol.for('IBreakpointResolver'),
     ItemService: Symbol.for('IItemService'),
-    BreakpointResolver: Symbol.for('IBreakpointResolver')
 };
 
 export { TYPES };
